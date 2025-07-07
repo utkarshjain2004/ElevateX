@@ -12,7 +12,7 @@ import Loading from '../../components/student/Loading';
 
 const Player = ({ }) => {
 
-  const { enrolledCourses, backendUrl, getToken, calculateChapterTime, userData, fetchUserEnrolledCourses } = useContext(AppContext)
+  const { enrolledCourses, backendUrl, getToken, calculateChapterTime, userData, fetchUserEnrolledCourses  } = useContext(AppContext)
 
   const { courseId } = useParams()
   const [courseData, setCourseData] = useState(null)
@@ -25,7 +25,7 @@ const Player = ({ }) => {
     enrolledCourses.map((course) => {
       if (course._id === courseId) {
         setCourseData(course)
-        course.courseRatings.map((item) => {
+        course.courseRating.map((item) => {
           if (item.userId === userData._id) {
             setInitialRating(item.rating)
           }
@@ -61,7 +61,7 @@ const Player = ({ }) => {
 
       if (data.success) {
         toast.success(data.message)
-        getCourseProgress()
+        CourseProgress()
       } else {
         toast.error(data.message)
       }
@@ -72,7 +72,7 @@ const Player = ({ }) => {
 
   }
 
-  const getCourseProgress = async () => {
+  const CourseProgress = async () => {
 
     try {
 
@@ -120,7 +120,7 @@ const Player = ({ }) => {
 
   useEffect(() => {
 
-    getCourseProgress()
+    CourseProgress()
 
   }, [])
 

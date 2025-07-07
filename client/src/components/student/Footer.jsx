@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:items-start items-center w-full">
           <img src={assets.logo} alt="logo" />
           <p className="mt-6 text-center md:text-left text-sm text-white/80">
-            ElevateEd is your all-in-one learning hub empowering you to master
+            ElevateX is your all-in-one learning hub empowering you to master
             new skills,connect with expert instructors, and unlock your
             potential anytime, anywhere. Join a community of thousands who are
             building brighter futures, one course at a time.

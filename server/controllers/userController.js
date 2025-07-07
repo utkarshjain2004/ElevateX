@@ -1,16 +1,16 @@
 import Stripe from "stripe";
-import { Purchase } from "../models/Purchase.js";
 import User from "../models/User.js";
 import Course from "../models/Course.js";
 import { clerkClient } from "@clerk/express";
 import { courseProgress } from "../models/CourseProgress.js";
+import {Purchase} from '../models/Purchase.js'
 
 //get user data
 // Get User Data
 export const getUserData = async (req, res) => {
     try {
 
-        const userId = req.auth.userId
+        const userId = req.auth().userId
 
         const user = await User.findById(userId)
 
@@ -133,7 +133,7 @@ export const updateUserCourseProgress = async(req,res)=>{
   try {
     const userId = req.auth().userId
     const {courseId, lectureId} = req.body
-    const progressData = await CourseProgress.findOne({userId,courseId});
+    const progressData = await courseProgress.findOne({userId,courseId});
 
     if(progressData){
       if(progressData.lectureCompleted.includes(lectureId)){
@@ -163,7 +163,7 @@ export const getUserCourseProgress = async(req,res) =>{
   try {
     const userId = req.auth().userId
     const {courseId} = req.body
-    const progressData = await CourseProgress.findOne({userId,courseId});
+    const progressData = await courseProgress.findOne({userId,courseId});
     res.json({success:true, progressData})
   } catch (error) {
     res.json({success:false,message:error.message})
@@ -196,14 +196,14 @@ export const addUserRating = async (req, res) => {
         }
 
         // Check is user already rated
-        const existingRatingIndex = course.courseRatings.findIndex(r => r.userId === userId);
+        const existingRatingIndex = course.courseRating.findIndex(r => r.userId === userId);
 
         if (existingRatingIndex > -1) {
             // Update the existing rating
-            course.courseRatings[existingRatingIndex].rating = rating;
+            course.courseRating[existingRatingIndex].rating = rating;
         } else {
             // Add a new rating
-            course.courseRatings.push({ userId, rating });
+            course.courseRating.push({ userId, rating });
         }
 
         await course.save();

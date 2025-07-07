@@ -9,7 +9,7 @@ const Hero = () => {
       <h1 className="md:text-home-heading-large text-home-heading-small relative font-bold text-gray-800 max-w-3xl mx-auto">
         Discover limitless learning that fits your choice
         <span className="text-emerald-600"> At your Pace.</span>
-        <img src={assets.sketch} alt="sketch" className="md:block hidden absolute -bottom-7 right-0" />
+        <img src={assets.sketch} alt="sketch" className="md:block hidden absolute -bottom-7 right-5 " />
       </h1>
       <p className="md:block hidden text-gray-500 max-w-2xl mx-auto">
         We bring together world-class instructors, interactive content, and a supportive community to help you achieve your personal and professional goals.

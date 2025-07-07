@@ -16,8 +16,14 @@ module.exports = {
       gridTemplateColumns: {
         'auto' : 'repeat(auto-fit, minmax(200px,1fr))'
     },
+    maxWidth :{
+      'course-card':'424px'
+    },
      spacing :{
       'section-height' : '500px',
+     },
+     boxShadow :{
+      'custom-card': '0px 4px 15px 2px rgba(0, 0, 0, 0.1)',
      }
   },
 },
